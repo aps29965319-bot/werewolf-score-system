@@ -1,1 +1,27 @@
-<html><head><meta charset='utf-8'><title>狼人殺計分系統</title></head><body><h1>狼人殺計分系統</h1></body></html>
+
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>狼人殺計分系統 v3</title></head><body>
+<h1>狼人殺計分系統 v3</h1>
+<form method="post" action="/add">
+<input name="name" placeholder="玩家名稱">
+<button>新增玩家</button>
+</form>
+<table border="1">
+<tr><th>玩家</th><th>積分</th><th>場次</th><th>勝場</th><th>MVP</th><th>操作</th></tr>
+{% for p in players %}
+<tr>
+<td>{{p['name']}}</td>
+<td>{{p['score']}}</td>
+<td>{{p['games']}}</td>
+<td>{{p['wins']}}</td>
+<td>{{p['mvp']}}</td>
+<td>
+<a href="/win/{{p['id']}}">勝利+3</a>
+<a href="/lose/{{p['id']}}">失敗</a>
+<a href="/mvp/{{p['id']}}">MVP+1</a>
+</td>
+</tr>
+{% endfor %}
+</table>
+</body></html>
